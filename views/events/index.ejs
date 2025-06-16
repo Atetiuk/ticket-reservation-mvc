@@ -1,0 +1,16 @@
+<% layout('layout') %>
+
+<h2 style="margin-bottom: 24px; text-align: center;">Dostępne wydarzenia</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fill,minmax(280px,1fr)); gap: 28px;">
+  <% events.forEach(event => { %>
+    <article style="background: rgba(255 255 255 / 0.1); border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); overflow: hidden; display: flex; flex-direction: column;">
+      <img src="<%= event.imageUrl %>" alt="<%= event.imageAlt %>" style="width: 100%; height: 150px; object-fit: cover;" loading="lazy" />
+      <div style="padding: 16px 20px; flex-grow: 1; display: flex; flex-direction: column;">
+        <h3 style="margin: 0 0 8px 0; color: #c4b5fd;"><%= event.title %></h3>
+        <p style="margin: 2px 0; font-weight: 600;">📅 <time datetime="<%= event.date %>"><%= new Date(event.date).toLocaleDateString('pl-PL', { year:'numeric', month:'long', day:'numeric' }) %></time></p>
+        <p style="margin: 2px 0; font-weight: 600;">📍 <%= event.location %></p>
+        <a href="/wydarzenia/<%= event.id %>" style="margin-top: auto; align-self: flex-start; padding: 8px 14px; background: #a78bfa; border-radius: 8px; color: white; font-weight: 600; text-decoration: none; transition: background-color 0.3s ease;">Zobacz szczegóły</a>
+      </div>
+    </article>
+  <% }) %>
+</div>

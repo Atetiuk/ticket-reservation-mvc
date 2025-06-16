@@ -1,0 +1,26 @@
+<% layout('layout') %>
+
+<a href="/wydarzenia" style="color: #c4b5fd; font-weight: 600; display: inline-flex; align-items: center; margin-bottom: 24px; text-decoration: none;">
+  <span class="material-icons" aria-hidden="true" style="margin-right: 6px;">arrow_back</span> Powrót do listy wydarzeń
+</a>
+
+<section style="background: rgba(255 255 255 / 0.12); padding: 32px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.3); max-width: 600px; margin: 0 auto; color: #eee;">
+  <h2 style="color: #a78bfa; margin-bottom: 16px;">Potwierdzenie rezerwacji</h2>
+  <p><strong>Wydarzenie:</strong> <%= event.title %></p>
+  <p><strong>Data:</strong> <time datetime="<%= event.date %>"><%= new Date(event.date).toLocaleDateString('pl-PL', { year:'numeric', month:'long', day:'numeric' }) %></time></p>
+  <p><strong>Lokalizacja:</strong> <%= event.location %></p>
+  <p><strong>Sektor:</strong> <%= booking.sector %></p>
+  <p><strong>Ilość biletów:</strong> <%= booking.quantity %></p>
+  <p><strong>Wartość:</strong> 
+    <% 
+      let price = 0
+      const sector = event.sectors.find(s => s.name === booking.sector)
+      if (sector) price = sector.price * booking.quantity
+    %>
+    <%= price %> PLN
+  </p>
+
+  <form method="POST" action="/rezerwacje/anuluj/<%= booking.id %>" onsubmit="return confirm('Czy na pewno chcesz anulować rezerwację?');" style="margin-top: 24px;">
+    <button type="submit" style="background: #e87979; width: 100%; padding: 12px; border-radius: 10px; font-weight: 600; color: white; border: none; cursor: pointer;">Anuluj rezerwację</button>
+  </form>
+</section>

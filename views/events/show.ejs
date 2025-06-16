@@ -1,0 +1,37 @@
+<% layout('layout') %>
+
+<a href="/wydarzenia" style="color: #c4b5fd; font-weight: 600; display: inline-flex; align-items: center; margin-bottom: 24px; text-decoration: none;">
+  <span class="material-icons" aria-hidden="true" style="margin-right: 6px;">arrow_back</span> Powrót do listy wydarzeń
+</a>
+
+<article style="background: rgba(255 255 255 / 0.12); border-radius: 16px; padding: 24px 32px; box-shadow: 0 8px 24px rgba(0,0,0,0.3);">
+  <img src="<%= event.imageUrl %>" alt="<%= event.imageAlt %>" style="width: 100%; max-height: 320px; object-fit: cover; border-radius: 12px; margin-bottom: 24px;" loading="lazy" />
+  <h2 style="color: #c4b5fd; margin-bottom: 8px;"><%= event.title %></h2>
+  <p style="font-weight: 600; margin: 4px 0;">📅 <time datetime="<%= event.date %>"><%= new Date(event.date).toLocaleDateString('pl-PL', { year:'numeric', month:'long', day:'numeric' }) %></time></p>
+  <p style="font-weight: 600; margin: 4px 0 20px 0;">📍 <%= event.location %></p>
+  <p style="line-height: 1.5; margin-bottom: 32px; color: #ddd; font-size: 1.05rem;"><%= event.description %></p>
+
+  <form method="POST" action="/rezerwacje" style="background: rgba(255 255 255 / 0.1); padding: 20px; border-radius: 12px; max-width: 400px;">
+    <input type="hidden" name="eventId" value="<%= event.id %>" />
+    <label for="sector">Wybierz sektor</label>
+    <select id="sector" name="sector" required>
+      <option value="" disabled selected>-- wybierz sektor --</option>
+      <% event.sectors.forEach(s => { %>
+        <option value="<%= s.name %>"><%= s.name %> — <%= s.price %> PLN</option>
+      <% }) %>
+    </select>
+
+    <label for="quantity">Ilość biletów</label>
+    <input
+      type="number"
+      id="quantity"
+      name="quantity"
+      min="1"
+      max="10"
+      value="1"
+      required
+    />
+
+    <button type="submit" style="margin-top: 16px; width: 100%;">Zarezerwuj bilety</button>
+  </form>
+</article>
