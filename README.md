@@ -20,8 +20,12 @@ Celem projektu jest zaprezentowanie umiejętności tworzenia aplikacji webowych 
 ## Instrukcja uruchomienia
 
    git clone https://github.com/Atetiuk/ticket-reservation-mvc.git
+
    cd projekt
+
    npm init -y
+
    npm install express ejs
+
    node app.js
 
