@@ -21,5 +21,6 @@
     "url": "https://github.com/Atetiuk/ticket-reservation-mvc/issues"
   },
   "homepage": "https://github.com/Atetiuk/ticket-reservation-mvc#readme",
-  "description": ""
+  "description": "## Opis projektu",
+  "devDependencies": {}
 }
