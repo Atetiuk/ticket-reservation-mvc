@@ -8,10 +8,18 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": "",
   "dependencies": {
     "ejs": "^3.1.10",
     "ejs-locals": "^1.0.2",
     "express": "^5.1.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Atetiuk/ticket-reservation-mvc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Atetiuk/ticket-reservation-mvc/issues"
+  },
+  "homepage": "https://github.com/Atetiuk/ticket-reservation-mvc#readme",
+  "description": ""
 }
